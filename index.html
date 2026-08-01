@@ -35,14 +35,14 @@
             border: 1px solid #EAE3D9;
         }
 
-        /* Кнопка музыки */
         .music-btn {
             background: #D4AF37;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 30px;
-            font-size: 14px;
+            font-size: 15px;
+            font-weight: 500;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
@@ -92,6 +92,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background-color: #f0f0f0;
         }
 
         .photo-container img {
@@ -118,7 +119,6 @@
             margin-bottom: 4px;
         }
 
-        /* Таймер */
         .timer-title {
             font-size: 14px;
             color: #888;
@@ -128,7 +128,7 @@
         .timer {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             margin: 20px 0 30px;
         }
 
@@ -152,7 +152,6 @@
             text-transform: lowercase;
         }
 
-        /* Кнопка WhatsApp */
         .wa-button {
             display: inline-flex;
             align-items: center;
@@ -185,13 +184,12 @@
 <body>
 
     <div class="card">
-        <!-- Плеер музыки -->
+        <!-- Кнопка плеера -->
         <button class="music-btn" onclick="toggleMusic()">
             🎵 <span id="music-text">Включить уйгурскую музыку</span>
         </button>
-        <audio id="bg-music" loop>
-            <source src="uyghur-music.mp3" type="audio/mpeg">
-            Ваш браузер не поддерживает аудио.
+        <audio id="bg-music" loop preload="auto">
+            <source src="./uyghur-music.mp3" type="audio/mpeg">
         </audio>
 
         <div class="header-icon">✨ 💍 ✨</div>
@@ -203,12 +201,12 @@
             Дорогие родные, близкие, друзья, коллеги. Совсем скоро в нашей жизни состоится особенный день. Нам будет очень приятно, если вы разделите с нами эти счастливые моменты и станете частью нашего праздника!
         </p>
 
-        <!-- Первое фото (Календарь) -->
+        <!-- Первое фото -->
         <div class="photo-container">
-            <img src="photo1.jpg" alt="Календарь свадьбы 30 августа 2026">
+            <img src="./photo1.jpg" alt="Календарь свадьбы">
         </div>
 
-        <!-- Информация о месте и времени -->
+        <!-- Информация -->
         <div class="info-block">
             <div class="info-item">
                 <strong>📅 Дата:</strong>
@@ -224,12 +222,12 @@
             </div>
         </div>
 
-        <!-- Второе фото (Кольца) -->
+        <!-- Второе фото -->
         <div class="photo-container">
-            <img src="photo2.jpg" alt="Обручальные кольца">
+            <img src="./photo2.jpg" alt="Обручальные кольца">
         </div>
 
-        <!-- Таймер обратного отсчета -->
+        <!-- Обратный отсчет -->
         <div class="timer-title">До торжества осталось:</div>
         <div class="timer">
             <div class="timer-item">
@@ -250,8 +248,7 @@
             </div>
         </div>
 
-        <!-- Кнопка WhatsApp (замените номер 77000000000 на ваш реальный номер) -->
-        <a href="https://wa.me/77000000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D0%BF%D0%BE%D0%B4%D1%82%D0%B2%D0%B5%D1%80%D0%B6%D0%B4%D0%B0%D1%8E%20%D1%81%D0%B2%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D1%81%D1%83%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5%20%D0%BD%D0%B0%20%D1%81%D0%B2%D0%B0%D0%B4%D1%8C%D0%B1%D0%B5!" class="wa-button" target="_blank">
+        <a href="https://wa.me/77000000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D0%BF%D0%BE%D0%B4%D1%82%D0%B2%D0%B5%D1%80%D0%B6%D0%B4%D0%B0%D1%8E%20%D1%81%D0%B2%D0%BE%D0%B5%20%D0%BF%D0%B0%D1%80%D1%81%D1%83%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5%20%D0%BD%D0%B0%20%D1%81%D0%B2%D0%B0%D0%B4%D1%8C%D0%B1%D0%B5!" class="wa-button" target="_blank">
             💬 Подтвердить присутствие (WhatsApp)
         </a>
 
@@ -263,7 +260,6 @@
     </div>
 
     <script>
-        // Управление музыкой
         const music = document.getElementById('bg-music');
         const musicText = document.getElementById('music-text');
         let isPlaying = false;
@@ -273,13 +269,15 @@
                 music.pause();
                 musicText.innerText = "Включить уйгурскую музыку";
             } else {
-                music.play();
-                musicText.innerText = "Пауза";
+                music.play().then(() => {
+                    musicText.innerText = "Пауза";
+                }).catch(err => {
+                    alert("Не удалось воспроизвести файл. Проверьте, загружен ли uyghur-music.mp3 в репозиторий!");
+                });
             }
             isPlaying = !isPlaying;
         }
 
-        // Таймер обратного отсчета до 30 августа 2026, 18:00
         const weddingDate = new Date('August 30, 2026 18:00:00').getTime();
 
         function updateCountdown() {
