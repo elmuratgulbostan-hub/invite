@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу — Эльмурат & Гульбостан</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FAF7F2;
+            color: #4A4A4A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px 10px;
+        }
+
+        .card {
+            background: #FFFFFF;
+            max-width: 500px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid #EAE3D9;
+        }
+
+        /* Кнопка музыки */
+        .music-btn {
+            background: #D4AF37;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            transform: translateY(-2px);
+            background: #B5932A;
+        }
+
+        .header-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 10px;
+        }
+
+        .names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 38px;
+            color: #D4AF37;
+            margin: 15px 0;
+            font-weight: 600;
+        }
+
+        .text {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+
+        .photo-container {
+            width: 100%;
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .info-block {
+            background-color: #FAF7F2;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+
+        .info-item {
+            margin: 12px 0;
+            font-size: 15px;
+        }
+
+        .info-item strong {
+            color: #2C2C2C;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Таймер */
+        .timer-title {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+
+        .timer-item {
+            background: #FAF7F2;
+            padding: 10px;
+            border-radius: 10px;
+            min-width: 65px;
+            border: 1px solid #EAE3D9;
+        }
+
+        .timer-number {
+            font-size: 22px;
+            font-weight: 600;
+            color: #D4AF37;
+        }
+
+        .timer-label {
+            font-size: 11px;
+            color: #777;
+            text-transform: lowercase;
+        }
+
+        /* Кнопка WhatsApp */
+        .wa-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 14px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .wa-button:hover {
+            background-color: #1DA851;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- Плеер музыки -->
+        <button class="music-btn" onclick="toggleMusic()">
+            🎵 <span id="music-text">Включить уйгурскую музыку</span>
+        </button>
+        <audio id="bg-music" loop>
+            <source src="uyghur-music.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио.
+        </audio>
+
+        <div class="header-icon">✨ 💍 ✨</div>
+        <h1>Приглашение на свадьбу</h1>
+        <div class="names">Эльмурат & Гульбостан</div>
+
+        <p class="text">
+            Приглашаем разделить с нами радостный момент создания семьи!<br><br>
+            Дорогие родные, близкие, друзья, коллеги. Совсем скоро в нашей жизни состоится особенный день. Нам будет очень приятно, если вы разделите с нами эти счастливые моменты и станете частью нашего праздника!
+        </p>
+
+        <!-- Первое фото (Календарь) -->
+        <div class="photo-container">
+            <img src="photo1.jpg" alt="Календарь свадьбы 30 августа 2026">
+        </div>
+
+        <!-- Информация о месте и времени -->
+        <div class="info-block">
+            <div class="info-item">
+                <strong>📅 Дата:</strong>
+                30 августа 2026 года
+            </div>
+            <div class="info-item">
+                <strong>🕰️ Время сбора:</strong>
+                18:00
+            </div>
+            <div class="info-item">
+                <strong>📍 Место проведения:</strong>
+                Ресторан «888»
+            </div>
+        </div>
+
+        <!-- Второе фото (Кольца) -->
+        <div class="photo-container">
+            <img src="photo2.jpg" alt="Обручальные кольца">
+        </div>
+
+        <!-- Таймер обратного отсчета -->
+        <div class="timer-title">До торжества осталось:</div>
+        <div class="timer">
+            <div class="timer-item">
+                <div class="timer-number" id="days">0</div>
+                <div class="timer-label">дней</div>
+            </div>
+            <div class="timer-item">
+                <div class="timer-number" id="hours">0</div>
+                <div class="timer-label">часов</div>
+            </div>
+            <div class="timer-item">
+                <div class="timer-number" id="minutes">0</div>
+                <div class="timer-label">минут</div>
+            </div>
+            <div class="timer-item">
+                <div class="timer-number" id="seconds">0</div>
+                <div class="timer-label">секунд</div>
+            </div>
+        </div>
+
+        <!-- Кнопка WhatsApp (замените номер 77000000000 на ваш реальный номер) -->
+        <a href="https://wa.me/77000000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D0%BF%D0%BE%D0%B4%D1%82%D0%B2%D0%B5%D1%80%D0%B6%D0%B4%D0%B0%D1%8E%20%D1%81%D0%B2%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B8%D1%81%D1%83%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5%20%D0%BD%D0%B0%20%D1%81%D0%B2%D0%B0%D0%B4%D1%8C%D0%B1%D0%B5!" class="wa-button" target="_blank">
+            💬 Подтвердить присутствие (WhatsApp)
+        </a>
+
+        <div class="footer">
+            <p>Дорогие друзья, будем искренне рады видеть вас на нашем празднике!</p>
+            <br>
+            <p>С наилучшими пожеланиями,<br><strong>Эльмурат и Гульбостан ❤️</strong></p>
+        </div>
+    </div>
+
+    <script>
+        // Управление музыкой
+        const music = document.getElementById('bg-music');
+        const musicText = document.getElementById('music-text');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicText.innerText = "Включить уйгурскую музыку";
+            } else {
+                music.play();
+                musicText.innerText = "Пауза";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Таймер обратного отсчета до 30 августа 2026, 18:00
+        const weddingDate = new Date('August 30, 2026 18:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = weddingDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days;
+                document.getElementById('hours').innerText = hours;
+                document.getElementById('minutes').innerText = minutes;
+                document.getElementById('seconds').innerText = seconds;
+            } else {
+                document.getElementById('days').innerText = "0";
+                document.getElementById('hours').innerText = "0";
+                document.getElementById('minutes').innerText = "0";
+                document.getElementById('seconds').innerText = "0";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
